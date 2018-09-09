@@ -1,21 +1,58 @@
 from django.db import models
 from django.db.models.signals import post_save
-from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token
 from django.dispatch import receiver
+from django.db.models.signals import post_delete
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
+import sys
 
-class Users(models.Model):
-	uid = models.CharField(max_length=8, null=False)
-	name = models.CharField(max_length=255, null=False)
-	owner = models.ForeignKey('auth.User', related_name='users',
-		on_delete=models.CASCADE)
-	date_created = models.DateTimeField(auto_now_add=True)
-	date_modified = models.DateTimeField(auto_now=True)
+"""Checks the size of the image file, and raises an error
+if the file exceeds 150kb
+"""
+def checkImageSize(image):
+	size = sys.getsizeof(image.file)
+	limit = 150
+	if size > limit * 1024:
+		raise ValidationError("Exceeds max size of %sKB" % limit)
 
-def __str__(self):
-	return "{}".format(self.uid, self.name)
+"""The model containing the fields that will be included in
+the database
+"""
+class Student(models.Model):
+	uid = models.PositiveIntegerField(
+		null = False,
+		validators = [MinValueValidator(0), MaxValueValidator(999)],
+		unique = True
+	)
+	name = models.CharField(
+		max_length = 255,
+		null = False
+	)
+	age = models.PositiveIntegerField(
+		null = True,
+		validators = [MinValueValidator(0), MaxValueValidator(100)]
+	)
+	image = models.ImageField(
+		upload_to="images/",
+		null = True,
+		max_length = 100,
+		validators = [checkImageSize]
+	)
+	owner = models.ForeignKey(
+		"auth.User",
+		related_name = "users",
+		on_delete = models.CASCADE
+	)
+	date_created = models.DateTimeField(
+		auto_now_add = True
+	)
+	date_modified = models.DateTimeField(
+		auto_now = True
+	)
 
-@receiver(post_save, sender=User)
-def create_auth_token(sender, instance=None, created=False, **kwargs):
-	if created:
-		Token.objects.create(user=instance)
+"""Deletes the image from local storage
+"""
+@receiver(post_delete, sender=Student)
+def submission_delete(sender, instance, **kwargs):
+	instance.image.delete(False)
