@@ -4,7 +4,6 @@ from django.dispatch import receiver
 from django.db.models.signals import post_delete
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.exceptions import ValidationError
-from django.contrib.auth.models import User
 import sys
 
 """Checks the size of the image file, and raises an error
@@ -38,11 +37,6 @@ class Student(models.Model):
 		null = True,
 		max_length = 100,
 		validators = [checkImageSize]
-	)
-	owner = models.ForeignKey(
-		"auth.User",
-		related_name = "users",
-		on_delete = models.CASCADE
 	)
 	date_created = models.DateTimeField(
 		auto_now_add = True
