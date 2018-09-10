@@ -1,4 +1,4 @@
-#!/Users/jroguszk/Exercises/Django_REST_API_Example/src/env/bin/python3.7
+#!/Users/jroguszk/Exercises/Recital/src/env/bin/python3.7
 from django.core import management
 
 if __name__ == "__main__":
