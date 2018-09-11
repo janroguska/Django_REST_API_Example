@@ -37,7 +37,7 @@
   http://http://127.0.0.1:8000/api/v1/users/[id]
   ```
 ## Methods:
-  `GET`|`PUT`|`POST`|DELETE`
+  `GET`|`PUT`|`POST`|`DELETE`
 ## Parameters:
 * uid(required): Positive integer from 0-999
 * name(required): String
