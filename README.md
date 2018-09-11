@@ -36,12 +36,12 @@
   ```
   http://http://127.0.0.1:8000/api/v1/users/[id]
   ```
-  ## Methods:
+## Methods:
   `GET`|`PUT`|`POST`|DELETE`
-  ## Parameters:
-  *uid(required): Positive integer from 0-999
-  *name(required): String
-  *age: Positive integer from 0-999
-  *image: JPEG file. limit: 150kb
+## Parameters:
+* uid(required): Positive integer from 0-999
+* name(required): String
+* age: Positive integer from 0-999
+* image: JPEG file. limit: 150kb
   
   
