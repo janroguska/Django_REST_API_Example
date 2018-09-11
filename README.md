@@ -1,6 +1,6 @@
 # Django_REST_API_Example
 
-#Setup
+##Setup
 * Ensure Python is installed globally.
 * ```bash
   $ pip install virtualenv
@@ -21,7 +21,7 @@
 * ```bash
   $ python3 manage.py migrate
   ```
-#Running the Server
+##Running the Server
 * ```bash
   $ python3 manage.py runserver
   ```
@@ -36,7 +36,7 @@
   ```
   http://http://127.0.0.1:8000/api/v1/users/[id
   ```
-  #Methods:
+  ##Methods:
   `GET`|`PUT`|`POST`|DELETE`
   #Parameters:
   *uid(required): Positive integer from 0-999
