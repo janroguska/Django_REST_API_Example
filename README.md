@@ -34,7 +34,7 @@
   http://http://127.0.0.1:8000/api/v1/users/
   ```
   ```
-  http://http://127.0.0.1:8000/api/v1/users/[id
+  http://http://127.0.0.1:8000/api/v1/users/[id]
   ```
   ## Methods:
   `GET`|`PUT`|`POST`|DELETE`
