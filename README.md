@@ -38,7 +38,7 @@
   ```
   ## Methods:
   `GET`|`PUT`|`POST`|DELETE`
-  #Parameters:
+  ## Parameters:
   *uid(required): Positive integer from 0-999
   *name(required): String
   *age: Positive integer from 0-999
