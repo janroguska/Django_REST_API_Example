@@ -45,7 +45,7 @@ class Student(models.Model):
 		auto_now = True
 	)
 
-"""Deletes the image from local storage
+"""Listens for a DELETE request. Deletes the image from local storage.
 """
 @receiver(post_delete, sender=Student)
 def submission_delete(sender, instance, **kwargs):

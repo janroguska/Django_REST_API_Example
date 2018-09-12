@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from .models import Student
 
+"""Uses ModelSerializer to format the Student model, and fields.
+"""
+
 class StudentSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Student
